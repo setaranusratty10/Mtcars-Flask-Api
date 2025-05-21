@@ -26,3 +26,5 @@ curl -X POST https://mtcars-app-594837701038.us-central1.run.app/predict_price \
     "gear": 4,
     "carb": 4
   }'
+
+if you run this command, this is the expected output:  "prediction": 22.599505761262385
