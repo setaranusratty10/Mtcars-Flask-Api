@@ -1,0 +1,27 @@
+The environment is created through a docker-compose command, that references the corresponding Dockerfile and requirements.txt file.
+
+First you will need to sync your repo to pull the new files. To run this API, change your directory to the docker folder and run:
+
+docker compose up -d
+
+If it has created the localhost server correctly you will not get your prompt back. You will need to open a new terminal (be in the same directory) and run the following curl command to get a response
+
+curl http://localhost:5001/
+
+Finally, let's test out some predictions. If you open the prediction.py script you can see that the inputs into the model are "cyl", "disp", "hp", "drat", "wt" and "qsec", "vs", "am", "gear", and "carb". We will pass these through a json formatted input through a curl POST request to the API. This is done as
+
+curl -X POST https://mtcars-app-594837701038.us-central1.run.app/predict_price \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cyl": 6,
+    "disp": 160,
+    "hp": 110,
+    "drat": 3.9,
+    "wt": 2.62,
+    "qsec": 16.46,
+    "vs": 0,
+    "am": 1,
+    "gear": 4,
+    "carb": 4
+  }'
+
